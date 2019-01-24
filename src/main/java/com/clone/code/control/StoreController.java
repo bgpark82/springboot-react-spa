@@ -1,0 +1,29 @@
+package com.clone.code.control;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.clone.code.dto.StoreDto;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+
+@RestController
+public class StoreController {
+
+	@PostMapping("/api/storeDtoes")
+	public void getStore(@RequestBody String list) throws JsonParseException, JsonMappingException, IOException {
+
+		ObjectMapper mapper = new ObjectMapper();
+		List<StoreDto> lists = mapper.readValue(list, new TypeReference<List<StoreDto>>() {
+		});
+		
+		System.out.println(lists.get(0).getTitle());
+	}
+}
