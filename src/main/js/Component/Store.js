@@ -13,6 +13,7 @@ state = {
     
     res.forEach(i => {
       const list = {
+        id:null,
         state:i.SIGUN_NM,
         title:i.BIZPLC_NM,
         size:i.TOT_FACLT_SCALE,

@@ -28,6 +28,7 @@ public class StoreDto {
 	private String payment_option;
 	private String info;
 	private String hours;
+	
 	public int getId() {
 		return id;
 	}
