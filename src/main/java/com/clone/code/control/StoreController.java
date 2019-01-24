@@ -27,8 +27,8 @@ public class StoreController {
 
 		ObjectMapper mapper = new ObjectMapper();
 		List<StoreDto> lists = mapper.readValue(list, new TypeReference<List<StoreDto>>() {});
-		System.out.println(lists.get(0).getTitle());
-		storeRepository.save(lists.get(0));
+		storeRepository.saveAll(lists);
+		
 		
 		
 	}
