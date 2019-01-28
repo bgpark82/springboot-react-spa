@@ -70,4 +70,28 @@ CREATE TABLE `review` (
 	CONSTRAINT FK_store_id FOREIGN KEY (store_id) REFERENCES store(id)
 );
 
+drop table review;
 
+CREATE TABLE `menu` (
+	`id`	INT AUTO_INCREMENT NOT NULL,
+	`store`	INT	NOT NULL,
+	`name`	VARCHAR(255)	NULL,
+	`price`	INT	NULL,
+	`profile`	VARCHAR(255)	NULL,
+	PRIMARY KEY(`id`),
+	CONSTRAINT FK_menu_store FOREIGN KEY (store) REFERENCES store(id)
+);
+
+drop table menu;
+
+INSERT INTO menu VALUES(null, 1, '아메리카노',3000,null);
+INSERT INTO menu VALUES(null, 1, '라떼',4000,null);
+INSERT INTO menu VALUES(null, 1, '바닐라라떼',4500,null);
+INSERT INTO menu VALUES(null, 1, '모카라떼',4500,null);
+
+INSERT INTO menu VALUES(null, 2, '아메리카노',3000,null);
+INSERT INTO menu VALUES(null, 2, '라떼',4000,null);
+INSERT INTO menu VALUES(null, 2, '바닐라라떼',4500,null);
+INSERT INTO menu VALUES(null, 2, '모카라떼',4500,null);
+
+select * from menu;

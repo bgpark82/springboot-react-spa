@@ -74,12 +74,11 @@ handleScroll =(e)=>{
     
     return (
       <div className="restaurant">
-        
         {this.state.restaurants.map((item)=>{
           return(
             <Link to={{
               pathname:`/restaurants/${id}/restaurant/${item.id}`,
-              state:{title:item.title}
+              state:{title:item.title, storeId:item.id, categoryId:id}
             }} key={item.id}>
               <hr/>
               <p>{item.title}</p>

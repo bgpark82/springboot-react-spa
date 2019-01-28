@@ -10,6 +10,7 @@ import Register from './Component/Register'
 import Login from './Component/Login'
 import Restaurants from './Home/Restaurants'
 import Restaurant from './Home/Restaurant'
+import Menu from './Home/Menu'
 
 class App extends Component {
   render() {
@@ -20,7 +21,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home}/>
               <Route exact path="/restaurants/:id" component={Restaurants}/>
-                <Route path="/restaurants/:id/restaurant/:item" component={Restaurant}/>
+                <Route exact path="/restaurants/:id/restaurant/:item" component={Restaurant}/>
+                  <Route exact path="/restaurants/:id/restaurant/:item/menu/:menu" component={Menu}/>
             <Route path="/store" component={Store}/>
             <Route path="/order" component={Order}/>
             <Route exact path="/mypage" component={MyPage}/>   
