@@ -1,5 +1,5 @@
-CREATE DATABASE clone_coding;
-USE clone_coding;
+CREATE DATABASE kh;
+USE kh;
 
 CREATE TABLE `user` (
 	`id`	INT(100)	AUtO_INCREMENT NOT NULL ,
@@ -29,7 +29,8 @@ CREATE TABLE `store` (
 	`address_road`	VARCHAR(255)	NULL,	
 	`post`	INT	NULL,			
 	`latitude`	VARCHAR(255)	NULL,				
-	`longitude`	VARCHAR(255)	NULL,				
+	`longitude`	VARCHAR(255)	NULL,
+	`run` VARCHAR(255)	NULL,
 	`minimum_price`	VARCHAR(255)	NULL,
 	`payment_option`	VARCHAR(255)	NULL,
 	`info`	VARCHAR(255)	NULL,
@@ -41,6 +42,32 @@ DROP TABLE `store`;
 
 INSERT INTO store VALUES (null,'김해','무한삼겹','121','카페',
 '김해시 전하동','김해시 가야로','1234','124.1234','123.2314',
-null,null,null,null);
+'운영중',null,null,null,null);
 
 SELECT * FROM store;
+
+CREATE TABLE `category` (
+	`id`	INT	AUTO_INCREMENT NOT NULL,
+	`title`	VARCHAR(255)	NULL,
+	`name`	VARCHAR(255)	NULL,
+	`image`	VARCHAR(255)	NULL,
+	`file`	VARCHAR(255)	NULL,
+	PRIMARY KEY(`id`)
+);
+
+DROP TABLE category;
+
+SELECT * FROM `category`;
+
+CREATE TABLE `review` (
+	`id`	INT	NOT NULL,
+	`user_id`	INT	NOT NULL,
+	`store_id`	INT	NOT NULL,
+	`star`	INT	NULL,
+	`content`	VARCHAR(1000)	NULL,
+	`date_post`	DATETIME	NULL,
+	`Field`	VARCHAR(255)	NULL,
+	CONSTRAINT FK_store_id FOREIGN KEY (store_id) REFERENCES store(id)
+);
+
+

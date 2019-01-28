@@ -4,22 +4,24 @@ import Lists from '../Home/Lists'
 
 export default class Home extends Component {
   state = {
-    cafes:[]
+    category:[]
   }
 
   componentWillMount=async()=>{
-    const req = await axios.get('https://openapi.gg.go.kr/Genrestrtcate?type=json')
+    const req = await axios.get('category.json')
     const res = req.data
-    console.log(res.Genrestrtcate[1].row);
+    console.log(res)
     this.setState({
-      cafes:res.Genrestrtcate[1].row
+      category:res
     })
+    console.log(this.state.category)
   }
 
   render() {
+    
     return (
       <div>
-        <Lists cafes={this.state.cafes}/>
+        <Lists category={this.state.category}/>
       </div>
     )
   }

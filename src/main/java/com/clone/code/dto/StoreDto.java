@@ -31,6 +31,7 @@ public class StoreDto {
 	private String payment_option;
 	private String info;
 	private String hours;
+	private String run;
 	
 	public int getId() {
 		return id;
@@ -116,13 +117,21 @@ public class StoreDto {
 	public void setHours(String hours) {
 		this.hours = hours;
 	}
+	public String getRun() {
+		return run;
+	}
+	public void setRun(String run) {
+		this.run = run;
+	}
 	@Override
 	public String toString() {
 		return "StoreDto [id=" + id + ", state=" + state + ", title=" + title + ", size=" + size + ", sort=" + sort
 				+ ", address_land=" + address_land + ", address_road=" + address_road + ", post=" + post + ", latitude="
 				+ latitude + ", longitude=" + longitude + ", minimum_price=" + minimum_price + ", payment_option="
-				+ payment_option + ", info=" + info + ", hours=" + hours + "]";
+				+ payment_option + ", info=" + info + ", hours=" + hours + ", run=" + run + "]";
 	}
+	
+
 	
 	
 

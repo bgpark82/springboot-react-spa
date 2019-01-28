@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -14,7 +14,7 @@
 </style>
 </head>
 <body>
- 	<div id="root"></div>
-	<script src="built/app.bundle.js"></script>
+ 	<div id="admin"></div>
+	<script src="built/admin.bundle.js"></script>
 </body>
 </html>

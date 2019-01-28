@@ -9,25 +9,27 @@ state = {
   handleClick=async()=>{
     const req = await axios.get("cafe.json")
     const res = await req.data;
-    
-    
+    console.log(res)
+
     res.forEach(i => {
-      const list = {
-        id:null,
-        state:i.SIGUN_NM,
-        title:i.BIZPLC_NM,
-        size:i.TOT_FACLT_SCALE,
-        sort:i.SANITTN_BIZCOND_NM,
-        address_land:i.REFINE_LOTNO_ADDR,
-        address_road:i.REFINE_ROADNM_ADDR,
-        post:i.REFINE_ZIP_CD,
-        latitude:i.REFINE_WGS84_LAT,
-        longitude:i.REFINE_WGS84_LOGT,
-      }  
-      this.setState({
-        lists: update(this.state.lists, {$push:[list]})
-      })
-    })
+      if(i.BSN_STATE_NM !== "폐업 등"){
+        const list = {
+          id:null,
+          state:i.SIGUN_NM,
+          title:i.BIZPLC_NM,
+          size:i.TOT_FACLT_SCALE,
+          sort:i.SANITTN_BIZCOND_NM,
+          address_land:i.REFINE_LOTNO_ADDR,
+          address_road:i.REFINE_ROADNM_ADDR,
+          post:i.REFINE_ZIP_CD,
+          latitude:i.REFINE_WGS84_LAT,
+          longitude:i.REFINE_WGS84_LOGT,
+          run:i.BSN_STATE_NM 
+        }  
+        this.setState({
+          lists: update(this.state.lists, {$push:[list]})
+        })
+    }})
     console.log(this.state.lists)
   }     
       

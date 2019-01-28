@@ -7,7 +7,10 @@ module.exports = {
 //	    main() of javascript
 //	    webpack must know this to know what to launch /when bundle is loaded by browser
 //      where to start
-    entry: './src/main/js/app.js',
+    entry: {
+        app:'./src/main/js/app.js', 
+        admin:'./src/main/js/admin.js'
+    }, 
         devtool: 'sourcemaps',
         cache: true,
         mode: 'development', 
@@ -16,7 +19,7 @@ module.exports = {
 //      this is absolute path
         path: path.resolve(__dirname),
 //    	compile all of the javascript into
-        filename: './src/main/resources/static/built/bundle.js'
+        filename: './src/main/resources/static/built/[name].bundle.js'
     },
 // which individual file to load
     module: {

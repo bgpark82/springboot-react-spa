@@ -9,5 +9,5 @@ import com.clone.code.dto.UserDto;
 //@RepositoryRestResource(exported = false)
 public interface UserDao extends CrudRepository<UserDto, Integer>{
 
-	List<UserDto> findAllByEmail(String email);
+	
 }
