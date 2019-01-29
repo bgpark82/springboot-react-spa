@@ -18,5 +18,12 @@
 	<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 </dependency>
 ```
+```
+<div sec:authorize="isAuthenticated()">
+	<div th:if="${session.user.getName() != null}">
+		<span th:text="${session.user.getName()}" />님 반갑습니다		
+	</div>
+</div>
+```
 
 [Thymeleaf - Spring Security integration modules](https://github.com/thymeleaf/thymeleaf-extras-springsecurity)
