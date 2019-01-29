@@ -17,7 +17,6 @@
 	<groupId>org.thymeleaf.extras</groupId>
 	<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 </dependency>
-
 ```
 
 [Thymeleaf - Spring Security integration modules](https://github.com/thymeleaf/thymeleaf-extras-springsecurity)
