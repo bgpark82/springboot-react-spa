@@ -23,11 +23,5 @@ public class IndexController {
 	public String login() {
 		return "login";
 	}
-	
-	@RequestMapping(path="/mypage/login")
-	@ResponseBody
-	public void login(@RequestParam("username") String username) {
-		System.out.println(username);
-	}
-	
+
 }

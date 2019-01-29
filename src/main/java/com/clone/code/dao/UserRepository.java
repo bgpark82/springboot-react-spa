@@ -6,5 +6,6 @@ import com.clone.code.dto.UserDto;
 public interface UserRepository extends JpaRepository<UserDto, Integer>{
 
 	UserDto findByEmail(String email);
+	UserDto findByEmailAndRole(String username, String role);
 	
 }
