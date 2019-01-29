@@ -10,7 +10,7 @@
 
 
 ## Thymeleaf
-### 1. Spring security tag
+1. Spring security tag
 
 ```
 <dependency>
