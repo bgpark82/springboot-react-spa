@@ -9,7 +9,8 @@ module.exports = {
 //      where to start
     entry: {
         app:'./src/main/js/app.js', 
-        admin:'./src/main/js/admin.js'
+        admin:'./src/main/js/admin.js',
+        login:'./src/main/js/login.js'
     }, 
         devtool: 'sourcemaps',
         cache: true,

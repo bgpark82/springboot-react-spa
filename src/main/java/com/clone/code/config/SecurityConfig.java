@@ -1,21 +1,23 @@
 package com.clone.code.config;
 
-import java.util.Arrays;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import com.clone.code.dto.UserDto;
 
-@Configuration
-@EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
+@Configuration												
+@EnableWebSecurity											// tell spring boot to drop its autoconfigured security policy
+@EnableGlobalMethodSecurity(prePostEnabled=true)			// turn on method-level security with Spring Security sophisticated @pre and @post
+public class SecurityConfig extends WebSecurityConfigurerAdapter{	// handy  base class to write policy
+	
 	@Autowired
 	private DataSource dataSource;
 	
@@ -23,22 +25,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
-			.usersByUsernameQuery(" select email, password from user where email=? ")
-			.authoritiesByUsernameQuery(" select email, role from user where email=? ");
+		.usersByUsernameQuery("select email, password, enable from user where email=? ")
+		.authoritiesByUsernameQuery("select email, role from user where email=? ")
+		.passwordEncoder(UserDto.ENCODER);
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.anyRequest().permitAll()
+				.antMatchers("/built/**").permitAll()
+//				.anyRequest().authenticated()
 			.and()
 				.formLogin()
-				.loginPage("/index.ftl")
-				.loginProcessingUrl("/login")
+				.loginPage("/")
+				.loginProcessingUrl("/loginConfirm")
 				.defaultSuccessUrl("/")
 				.permitAll()
 			.and()
-				.csrf().disable();
+				.httpBasic()
+			.and()
+				.csrf().disable().logout().logoutSuccessUrl("/");
 	}
 	
 

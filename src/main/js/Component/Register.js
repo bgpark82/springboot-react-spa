@@ -9,14 +9,14 @@ state = {
     email:'',
     password:'',
     phone:'',
+    enable:'1',
     role:'ROLE_USER'
 }
 
 handleSubmit = async(e) => {
     e.preventDefault()
-    const req = await axios("/api/userDtoes",this.state)
+    const req = await axios.post("/api/userDtoes",this.state)
     const res = await req.data
-    console.log(res.name)
     if(res !== null){
         alert(res.name + "님 반갑습니다.");
         this.props.history.push('/mypage/login')

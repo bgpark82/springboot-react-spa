@@ -11,22 +11,24 @@ export default class Login extends Component {
         let temp = {}
         temp[e.target.name]=e.target.value;
         this.setState(temp);
+        console.log(this.state)
     }
 
     handleSubmit = async() => {
-       const req = await axios("/login",{
-            method: 'POST',
-            auth:{
+       const req = await axios({
+           method:'POST',
+            url:'/login',
+            data:{
                 username:this.state.username,
-                password:this.state.password
-            }})   
+            }
+        })   
        const res = req.data;
-        console.log(res);
+    ç
     }
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
           아이디 : <input type="text" name="username" onChange={this.handleChange}/>
           비밀번호 : <input type="password" name="password" onChange={this.handleChange}/>
           <button>로그인</button>

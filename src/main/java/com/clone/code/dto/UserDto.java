@@ -27,6 +27,7 @@ public class UserDto {
 	private String email;
 	private String address;
 	private String role;
+	private String enable;
 	
 	public void setPassword(String password) {
 		this.password = ENCODER.encode(password);
